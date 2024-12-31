@@ -25,6 +25,7 @@ const Home = () => {
   const onRefresh = async () =>{
     setRefreshing(true);
     await refetch();
+    await refetchLatest();
     setRefreshing(false);
   }
   return (
