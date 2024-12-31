@@ -125,4 +125,22 @@ You can swipe up hard in the Home page so you will be able to see new changes
     npx expo install react-native-maps
    ```
 
-**These are required to run the app because otherwhise you will be facing errors**
+If you faced an error reach out to me please👋
+
+**These are required to run the app because otherwise you will be facing errors**
+
+
+## Using the app
+
+When using the app make sure that you installed the dependencies above.
+Make sure you are following the description in the Features above.
+
+- First you will see the index page will contain a button that says **continue with email**
+- Then, you can choose if you want to sign in or register => make sure the password is at least 9 characters.
+- After that you will be able to navigate between the screens.
+- In home is like an exhibition of the posts, and additionally you can use the search button **as explained in the search feature**
+- In the profile page you will be able to see your posts and how many posts you got and you can sing out make sure to review **hidden feature => Retaining your account**
+- In the create page you will be able to create your own post by uploading an image from your Photos App and giving it a title and a description. Review **hidden feature => Refreshing your page** and make sure to refresh the page by swiping it up to see the added post *- whether in Home and Profile -*.
+- In the maps page you see many fitness hotspots and by pressing on the pins you will be able to see the information about this place.
+
+
