@@ -14,7 +14,7 @@ import { StatusBar } from 'expo-status-bar';
 const Home = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();
   const { data: posts, refetch } = useAppwrite(getAllPosts);
-  const { data: latestPosts } = useAppwrite(getLatestPosts);
+  const { data: latestPosts, refetchLatest } = useAppwrite(getLatestPosts);
 
 
 

@@ -1,6 +1,6 @@
 import { router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { View, Image, FlatList, TouchableOpacity } from "react-native";
+import { View, Image, FlatList, TouchableOpacity,RefreshControl } from "react-native";
 import InfoBox from '@/components/InfoBox'
 import { icons } from "../../constants";
 import useAppwrite from "../../lib/useAppwrite";
@@ -9,10 +9,18 @@ import { useGlobalContext } from "../../context/GlobalProvider";
 import EmptyState from '@/components/EmptyState'
 import SessionCard from '@/components/SessionCard'
 import { StatusBar } from 'expo-status-bar';
+import React, { useState } from 'react'
 
 const Profile = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext();
-  const { data: posts } = useAppwrite(() => getUserPosts(user.$id));
+  const { data: posts, refetch } = useAppwrite(() => getUserPosts(user.$id));
+  const [refreshing, setRefreshing] = useState(false)
+  
+  const onRefresh = async () =>{
+    setRefreshing(true);
+    await refetch();
+    setRefreshing(false);
+  }
 
   const logout = async () => {
     try{
@@ -25,6 +33,7 @@ const Profile = () => {
       console.error("Logout error:", error);
     }
   };
+
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -88,6 +97,7 @@ const Profile = () => {
             </View>
           </View>
         )}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>}
       />
       <StatusBar backgroundColor={'#f6f4f0'} style='dark'></StatusBar>
     </SafeAreaView>
